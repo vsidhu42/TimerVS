@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_primary">
+
+    <TextView
+        android:id="@+id/tvSwTime"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:gravity="center"
+        android:text="00:00.00"
+        android:textColor="@color/text_primary"
+        android:textSize="64sp"
+        android:fontFamily="monospace"
+        android:includeFontPadding="false"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="28dp"
+        android:paddingBottom="12dp">
+
+        <Button
+            android:id="@+id/btnSwStart"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/btn_start"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            android:backgroundTint="@color/btn_start"/>
+
+        <Button
+            android:id="@+id/btnSwPause"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/btn_pause"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            android:backgroundTint="@color/btn_pause"/>
+
+        <Button
+            android:id="@+id/btnSwLap"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/btn_lap"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            android:backgroundTint="@color/btn_lap"/>
+
+        <Button
+            android:id="@+id/btnSwReset"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:text="@string/btn_reset"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            android:backgroundTint="@color/btn_reset"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider"
+        android:layout_marginHorizontal="16dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:orientation="horizontal"
+        android:paddingHorizontal="20dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/col_lap"
+            android:textColor="@color/text_secondary"
+            android:textSize="12sp"/>
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:text="@string/col_lap_time"
+            android:textColor="@color/text_secondary"
+            android:textSize="12sp"/>
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:text="@string/col_total"
+            android:textColor="@color/text_secondary"
+            android:textSize="12sp"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider"
+        android:layout_marginHorizontal="16dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvLaps"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:layout_marginBottom="80dp"
+        android:paddingHorizontal="20dp"
+        android:clipToPadding="false"/>
+
+</LinearLayout>

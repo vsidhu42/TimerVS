@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(run)",
+      "PowerShell(adb devices *)",
+      "PowerShell(adb install *)",
+      "PowerShell(winget install *)"
+    ]
+  }
+}

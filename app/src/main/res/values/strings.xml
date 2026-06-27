@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Timer VS</string>
+    <string name="tab_timer">Timer</string>
+    <string name="tab_stopwatch">Stopwatch</string>
+    <string name="btn_start">Start</string>
+    <string name="btn_pause">Pause</string>
+    <string name="btn_reset">Reset</string>
+    <string name="btn_lap">Lap</string>
+    <string name="label_hh">HH</string>
+    <string name="label_mm">MM</string>
+    <string name="label_ss">SS</string>
+    <string name="col_lap">Lap</string>
+    <string name="col_lap_time">Lap Time</string>
+    <string name="col_total">Total</string>
+</resources>
