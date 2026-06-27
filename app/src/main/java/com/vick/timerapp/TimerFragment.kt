@@ -1,12 +1,15 @@
 package com.vick.timerapp
 
+import android.app.AlertDialog
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.media.AudioAttributes
 import android.media.SoundPool
+import android.net.Uri
 import android.os.Build
+import android.provider.Settings
 import androidx.core.app.NotificationCompat
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -154,10 +157,27 @@ class TimerFragment : Fragment() {
     private fun handleStart() {
         val ms = if (state == State.IDLE) pickerMs() else remainingMs
         if (ms <= 0L) return
+        if (!Settings.canDrawOverlays(requireContext())) {
+            promptOverlayPermission()
+        }
         state = State.RUNNING
         startCountDown(ms)
         setPickersEnabled(false)
         updateButtons()
+    }
+
+    private fun promptOverlayPermission() {
+        AlertDialog.Builder(requireContext())
+            .setTitle("Open app when timer ends?")
+            .setMessage("To pop Timer VS over other apps when the timer goes off, grant \"Display over other apps\" permission.")
+            .setPositiveButton("Go to Settings") { _, _ ->
+                startActivity(
+                    Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+                        Uri.parse("package:${requireContext().packageName}"))
+                )
+            }
+            .setNegativeButton("Not now", null)
+            .show()
     }
 
     private fun handlePause() {
@@ -199,6 +219,13 @@ class TimerFragment : Fragment() {
         layoutTimerButtons.visibility = View.GONE
         btnStopAlert.visibility = View.VISIBLE
         postAlertNotification()
+        if (Settings.canDrawOverlays(requireContext())) {
+            requireContext().startActivity(
+                Intent(requireContext(), MainActivity::class.java).apply {
+                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
+                }
+            )
+        }
         fireAlert()
         alertHandler.postDelayed(alertRunnable, 1000L)
     }
